@@ -1,0 +1,211 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  text-decoration: none;
+  user-select: none;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #161616;
+  color: white;
+}
+body a {
+  color: white;
+}
+
+.gradient-title, .game-wrapper .game-header .game-title, .page-title {
+  background-image: linear-gradient(108deg, rgb(224, 255, 0) 0%, rgb(255, 0, 110) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 250%;
+  background-position: left;
+  animation-name: gradient-animation;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+.main-wrapper {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.page-title {
+  font-size: 3.5em;
+  letter-spacing: -5px;
+  font-weight: 800;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: left;
+  }
+  50% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
+  }
+}
+#difficulty-selection-list {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 15vh;
+}
+
+.difficulty-selector {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 20px;
+  font-size: 1em;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  transition: 0.1s ease all;
+}
+
+#easy-selector {
+  background-color: rgb(31, 196, 31);
+}
+#easy-selector:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+#medium-selector {
+  background-color: rgb(226, 187, 11);
+}
+#medium-selector:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+#hard-selector {
+  background-color: rgb(196, 42, 31);
+}
+#hard-selector:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+#expert-selector {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+#expert-selector:hover {
+  background-color: rgb(109, 2, 2);
+  color: rgb(255, 255, 255);
+}
+
+#secret-button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: #161616;
+  font-weight: 900;
+  color: rgb(255, 255, 255);
+  margin: 20px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.game-wrapper {
+  background-color: #161616;
+  width: auto;
+}
+.game-wrapper .game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #353535;
+  padding: 15px;
+  margin: 0;
+  font-size: 0.8em;
+}
+.game-wrapper .game-header .back-button, .game-wrapper .game-header .score {
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #181818;
+  color: white;
+  font-size: 0.8em;
+  border-radius: 20px;
+  color: white;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+.game-wrapper .game-header .back-button:hover, .game-wrapper .game-header .score:hover {
+  background-color: white;
+  color: black;
+}
+.game-wrapper .game-header .score:hover {
+  background-color: #181818;
+  color: white;
+}
+
+.cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  max-width: 500px;
+  height: 50vh;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.cards-zone {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 30px;
+  grid-gap: 10px;
+  place-items: center;
+}
+
+.card {
+  background-color: white;
+  width: 50px;
+  height: 50px;
+}
+
+@media (min-width: 505px) {
+  .cards-wrapper {
+    height: 80vh;
+  }
+  .card {
+    width: 100px;
+    height: 100px;
+  }
+}
+@media (min-width: 765px) {
+  .page-title {
+    font-size: 8em;
+    letter-spacing: -5px;
+  }
+  #difficulty-selection-list {
+    flex-direction: column;
+    text-align: center;
+    width: 60vh;
+  }
+  .difficulty-selector {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    font-size: 1.5em;
+  }
+}
