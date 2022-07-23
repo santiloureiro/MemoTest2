@@ -69,18 +69,26 @@ function expertMode(){
         difficultyButtonsDiv.appendChild(expertModeButton);
 }
 
+function activateExpertMode(){
+    if(expertCounter === 10){
+        expertMode()
+    }
+}
+
+
 function add1ToExpertCounter(){
     expertCounter += 1;
     expertCounterButton.innerText ="☠️" + expertCounter;
     console.log(expertCounter);
-    if(expertCounter === 10){
-        expertMode()
-    }
+
+    activateExpertMode();
+
     if(expertCounter > 10){
         expertCounterButton.innerText ="☠️";
     }
     return expertCounter
 }
+
 
 
 
