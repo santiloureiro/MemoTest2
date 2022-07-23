@@ -74,8 +74,10 @@ function add1ToExpertCounter(){
     expertCounterButton.innerText ="☠️" + expertCounter;
     console.log(expertCounter);
     if(expertCounter === 10){
-        expertCounterButton.innerText ="☠️";
         expertMode()
+    }
+    if(expertCounter > 10){
+        expertCounterButton.innerText ="☠️";
     }
     return expertCounter
 }
