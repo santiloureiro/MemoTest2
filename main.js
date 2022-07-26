@@ -65,7 +65,7 @@ function expertMode(){
         expertModeButton.setAttribute("href", "pages/expert.html")
         expertModeButton.setAttribute("class", "difficulty-selector")
         expertModeButton.setAttribute("id", "expert-selector")
-        expertModeButton.innerText = "☠️ Modo experto ☠️";
+        expertModeButton.innerText = "☠️ Modo Experto ☠️";
         difficultyButtonsDiv.appendChild(expertModeButton);
 }
 
@@ -75,6 +75,7 @@ function activateExpertMode(){
     }
 }
 
+//Suma 1 al contador del boton del modo experto
 
 function add1ToExpertCounter(){
     expertCounter += 1;
@@ -88,9 +89,6 @@ function add1ToExpertCounter(){
     }
     return expertCounter
 }
-
-
-
 
 //Pasa por consola todos los strings del array "cards"
 
