@@ -188,20 +188,25 @@ body a {
   background-color: rgba(255, 255, 255, 0.24);
 }
 
-@media (min-width: 505px) {
+@media (min-width: 650px) and (orientation: landscape) {
   .cards-wrapper {
-    height: 80vh;
-    width: 40vw;
+    height: 70vh;
+    width: 80vw;
   }
   .cards-zone{
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   .card {
-    width: 130px;
-    height: 130px;
+    width: 50px;
+    height: 50px;
   }
 }
-@media (min-width: 765px) {
+
+@media (min-width: 805px) {
+  .card {
+    width: 80px;
+    height: 80px;
+  }
   .page-title {
     font-size: 8em;
     letter-spacing: -5px;
@@ -222,3 +227,20 @@ body a {
     font-size: 1.5em;
   }
 }
+
+
+
+@media (min-width: 1500px) {
+  .cards-wrapper {
+    height: 80vh;
+    width: 40vw;
+  }
+  .cards-zone{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .card {
+    width: 130px;
+    height: 130px;
+  }
+}
+
