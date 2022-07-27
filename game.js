@@ -1,6 +1,6 @@
 let score = 0;
 
-const cartas = ["🚓", "🍕", "💣", "🚕", "🍌", "🐝", "🚓", "🍕", "💣", "🚕", "🍌", "🐝"];
+const cards = ["🚓", "🍕", "💣", "🚕", "🍌", "🐝", "🚓", "🍕", "💣", "🚕", "🍌", "🐝"];
 
 let cardsSelected = [];
 
@@ -31,10 +31,11 @@ function shuffleCards () {
     return cards;
 }
 
+shuffleCards()
 
 //Crea las cards para el juego
 
-cartas.forEach((item) => {
+cards.forEach((item) => {
     tile += `<div class="card">${item}</div>`
 })
 
