@@ -40,23 +40,3 @@ cartas.forEach((item) => {
 
 cardContainer.innerHTML = tile;
 
-
-
-const hayAutito = cards.find(el => el === "🚕");
-
-const cardsString = cards.join()
-
-console.log(hayAutito)
-
-console.log(cardsString)
-
-shuffleCards()
-
-cardsSelected.push(cards[2]);
-cardsSelected.push(cards[1]);
-
-console.log(cardsSelected)
-
-compareCards();
-
-
