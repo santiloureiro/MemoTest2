@@ -19,6 +19,10 @@ const expertCounterButton = document.querySelector("#secret-button");
 const easyButton = document.querySelector("#easy-selector")
 const mediumButton = document.querySelector("#medium-selector")
 const hardButton = document.querySelector("#hard-selector")
+    easyButton.onclick = () => {createPlayers()}
+    mediumButton.onclick = () => {createPlayers()}
+    hardButton.onclick = () => {createPlayers()}
+
 
 const difficultyButtonsDiv = document.querySelector("#difficulty-selection-list")
 

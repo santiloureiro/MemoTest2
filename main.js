@@ -5,9 +5,15 @@ let expertCounter = 0;
 
 const expertCounterButton = document.querySelector("#secret-button")
 
+    expertCounterButton.onclick = () => {add1ToExpertCounter()};
+
 const easyButton = document.querySelector("#easy-selector")
 const mediumButton = document.querySelector("#medium-selector")
 const hardButton = document.querySelector("#hard-selector")
+
+    easyButton.onclick = () => {createPlayers()}
+    mediumButton.onclick = () => {createPlayers()}
+    hardButton.onclick = () => {createPlayers()}
 
 const difficultyButtonsDiv = document.querySelector("#difficulty-selection-list")
 
@@ -61,4 +67,5 @@ function add1ToExpertCounter(){
     return expertCounter
 }
 
-expertCounterButton.onclick = () => {add1ToExpertCounter()};
+
+
