@@ -257,8 +257,12 @@ body a {
     font-size: 1.5em;
   }
 
-  .back-button, .score {
+  .back-button, .score{
     font-size: 0.6em;
+  }
+
+  .game-title{
+    font-size: 1.3em;
   }
 }
 
