@@ -16,7 +16,7 @@ body a {
   color: white;
 }
 
-.gradient-title, .game-wrapper .game-header .game-title, .page-title {
+.gradient-title, .game-title, .page-title {
   background-image: linear-gradient(108deg, rgb(224, 255, 0) 0%, rgb(255, 0, 110) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -124,7 +124,7 @@ body a {
   background-color: #161616;
   width: auto;
 }
-.game-wrapper .game-header {
+.game-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -138,7 +138,7 @@ body a {
   font-size: 1em
 }
 
-.game-wrapper .game-header .back-button, .game-wrapper .game-header .score {
+.back-button, .score {
   padding: 5px;
   padding-left: 5px;
   padding-right: 5px;
@@ -150,11 +150,11 @@ body a {
   font-weight: 700;
   transition: all 0.3s ease;
 }
-.game-wrapper .game-header .back-button:hover, .game-wrapper .game-header .score:hover {
+.back-button:hover, .score:hover {
   background-color: white;
   color: black;
 }
-.game-wrapper .game-header .score:hover {
+.score:hover {
   background-color: #181818;
   color: white;
 }
@@ -225,13 +225,13 @@ body a {
 
 @media (min-width: 805px) {
   .page-title {
-    font-size: 8em;
+    font-size: 5em;
     letter-spacing: -5px;
   }
   #difficulty-selection-list {
     flex-direction: column;
     text-align: center;
-    width: 60vh;
+    width: 40vh;
   }
   .difficulty-selector {
     padding-top: 5px;
@@ -241,13 +241,12 @@ body a {
     margin-top: 5px;
     margin-bottom: 5px;
     border-radius: 20px;
-    font-size: 1.5em;
+    font-size: 1em;
   }
   .card-block, .card-back, .card-front{
     width: 50px;
     height: 50px;
   }
-
 
 }
 
@@ -257,7 +256,6 @@ body a {
     height: 100px;
     font-size: 1.5em;
   }
-
 }
 
 @media (min-width: 1500px) {

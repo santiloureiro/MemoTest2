@@ -1,4 +1,6 @@
-let score = 0;
+let scoreValue = 0;
+
+let scoreCounter = document.getElementById("score-counter")
 
 const cards = ["🚓", "🍕", "💣", "🚕", "🍌", "🐝", "🚓", "🍕", "💣", "🚕", "🍌", "🐝"];
 
@@ -67,27 +69,50 @@ function selectCard(i) {
     
 }
 
+
+function checkSelectedSameCard(){
+    if(back1.id === "correct" || back2.id === "correct"){
+        return
+    }
+}
+
+function scoreUp(){
+    scoreValue += 1;
+
+    scoreCounter.innerHTML = scoreValue
+}
+
+function scoreDown(){
+    if(scoreValue > 0){
+        scoreValue -= 1;
+        scoreCounter.innerHTML = scoreValue
+        }
+}
+
 function deselectCard(cardsSelected){
 
         let back1 = document.getElementById("back"+cardsSelected[0])
         let back2 = document.getElementById("back"+cardsSelected[1])
 
+        checkSelectedSameCard();
 
-        if(back1.id === "correct" || back2.id === "correct"){
-            return
-        }
 setTimeout( () => {
         if((back1.innerHTML != back2.innerHTML) || (back1.id === back2.id)){
             let front1 = document.getElementById("front"+cardsSelected[0])
             let front2 = document.getElementById("front"+cardsSelected[1])
             front1.style.zIndex = 999;
             front2.style.zIndex = 999;
+            
+            scoreDown()
+
         } else {
             back1.style.zIndex = 999;
             back2.style.zIndex = 999;
             back1.style.backgroundColor = "#D9FF9B"
             back2.style.backgroundColor = "#D9FF9B"
             back1.setAttribute("id","correct")
+
+            scoreUp();
         }
     }, 700);
 }
