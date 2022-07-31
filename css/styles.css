@@ -124,6 +124,7 @@ body a {
   background-color: #161616;
   width: auto;
 }
+
 .game-header {
   display: flex;
   justify-content: space-between;
@@ -135,7 +136,8 @@ body a {
 }
 
 .game-title{
-  font-size: 1em
+  font-size: 1em;
+  z-index: 999;
 }
 
 .back-button, .score {
@@ -149,6 +151,7 @@ body a {
   color: white;
   font-weight: 700;
   transition: all 0.3s ease;
+  z-index: 999;
 }
 .back-button:hover, .score:hover {
   background-color: white;
@@ -157,6 +160,40 @@ body a {
 .score:hover {
   background-color: #181818;
   color: white;
+}
+
+#game-starter{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #161616;
+  color: white;
+  top: 0;
+  bottom: 0;
+  left:0;
+  right: 0;
+  z-index: 15;
+}
+
+#start-button{
+  padding: 10px;
+  background-image:  linear-gradient(108deg, rgb(224, 255, 0) 0%, rgb(255, 0, 110) 100%);
+  background-size: 250%;
+  background-position: left;
+  animation-name: gradient-animation;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  color: #ffffff;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: all ease 0.3s;
+  cursor: pointer;
+}
+
+#start-button:hover{
+  padding: 13px;
 }
 
 .cards-wrapper {
@@ -182,6 +219,7 @@ body a {
   height: 50px;
   font-size: 1.2em;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .card-block {
@@ -195,7 +233,7 @@ body a {
   align-items: center;
   justify-content: center;
   position: absolute;
-  z-index: 999;
+  z-index: -1;
 }
 
 .card-back{

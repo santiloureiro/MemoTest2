@@ -33,9 +33,7 @@ class Player {
 const createPlayers = () => {
     player1 = new Player(prompt("Enter Player One's Name"), 0);
 
-    player2 = new Player(prompt("Enter Player Two's Name"), 0);
-
-    alert("Jugador 1: " + player1.name + "\nJugador 2: " + player2.name);
+    alert("Jugador 1: " + player1.name);
 }
 
 function expertMode(){
