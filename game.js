@@ -8,6 +8,21 @@ let cardContainer = document.querySelector(".cards-zone")
 
 let tile = "";
 
+
+
+//Crea las cards para el juego
+shuffleCards()
+
+cards.forEach((item, i) => {
+    tile += `<div id="carta${i}" class="card-block" onclick="selectCard(${i})">
+    <div class="card-front" id="front${i}">?</div>
+    <div class="card-back" id="back${i}">${item}</div>
+    </div>`
+})
+
+cardContainer.innerHTML = tile;
+
+
 //Compara una carta seleccionada con otra carta seleccionada
 
 function compareCards(){
@@ -17,6 +32,7 @@ function compareCards(){
         console.log("No son pareja");
     }
 }
+
 
 //Mezcla el array de cartas
 
@@ -31,13 +47,48 @@ function shuffleCards () {
     return cards;
 }
 
-shuffleCards()
+//Selecciona Cartas
 
-//Crea las cards para el juego
+function selectCard(i) {
+    let carta = document.getElementById("carta"+i)
+    let cartaBack = document.getElementById("back"+i)
+    let cartaFront = document.getElementById("front"+i)
+    cartaFront.style.zIndex = -1
+    cartaBack.style.zIndex = 1
+    cardsSelected.push(i)
 
-cards.forEach((item) => {
-    tile += `<div class="card">${item}</div>`
-})
+    console.log(cardsSelected)
 
-cardContainer.innerHTML = tile;
+    if(cardsSelected.length === 2){
+        deselectCard(cardsSelected)
+        cardsSelected = [];
+    }
+
+    
+}
+
+function deselectCard(cardsSelected){
+
+        let back1 = document.getElementById("back"+cardsSelected[0])
+        let back2 = document.getElementById("back"+cardsSelected[1])
+
+
+        if(back1.id === "correct" || back2.id === "correct"){
+            return
+        }
+setTimeout( () => {
+        if((back1.innerHTML != back2.innerHTML) || (back1.id === back2.id)){
+            let front1 = document.getElementById("front"+cardsSelected[0])
+            let front2 = document.getElementById("front"+cardsSelected[1])
+            front1.style.zIndex = 999;
+            front2.style.zIndex = 999;
+        } else {
+            back1.style.zIndex = 999;
+            back2.style.zIndex = 999;
+            back1.style.backgroundColor = "#D9FF9B"
+            back2.style.backgroundColor = "#D9FF9B"
+            back1.setAttribute("id","correct")
+        }
+    }, 700);
+}
 
