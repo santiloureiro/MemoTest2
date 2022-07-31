@@ -214,7 +214,7 @@ body a {
 @media (min-width: 650px) and (orientation: landscape) {
   .cards-wrapper {
     height: 70vh;
-    width: 80vw;
+    width: 70vw;
   }
   .cards-zone{
     grid-template-columns: 1fr 1fr 1fr 1fr;
