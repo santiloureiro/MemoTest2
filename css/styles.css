@@ -19,6 +19,7 @@ body a {
 .gradient-title, .game-title, .page-title {
   background-image: linear-gradient(108deg, rgb(224, 255, 0) 0%, rgb(255, 0, 110) 100%);
   -webkit-background-clip: text;
+  background-clip: clip;
   -webkit-text-fill-color: transparent;
   background-size: 250%;
   background-position: left;
