@@ -6,6 +6,10 @@ const cards = ["🚓", "🍕", "💣", "🚕", "🍌", "🐝", "🚓", "🍕", "
 
 let cardsSelected = [];
 
+let usuarios = []
+
+let paresResueltos = 0;
+
 let cardContainer = document.querySelector(".cards-zone")
 
 let tile = "";
@@ -13,6 +17,10 @@ let tile = "";
 let startWall = document.getElementById("game-starter")
 
 let startButton = document.getElementById("start-button")
+
+let scoreboard = document.getElementById("game-scoreboard")
+
+let scoreboardValue = "";
 
 startButton.onclick = () => {startGame()}
 
@@ -39,19 +47,40 @@ setTimeout(() => {
     return
 }
 
+//Constructor de Jugadores
+
+class Player {
+    constructor(name, score){
+        this.name = name;
+        this.score = score;
+    }
+}
+
+//Crea Jugadores con el constructor
+
+const createPlayers = () => {
+    player1 = new Player(prompt("Enter Player One's Name"), 0);
+
+    alert("Score saved, " + player1.name);
+
+}
+
 //Primero se randomiza el array y se crean las cards para el juego
 
 shuffleCards()
 
-cards.forEach((item, i) => {
-    tile += `<div id="carta${i}" class="card-block" onclick="selectCard(${i})">
-    <div class="card-front" id="front${i}">?</div>
-    <div class="card-back" id="back${i}">${item}</div>
-    </div>`
-})
+function buildCards(){
+    cards.forEach((item, i) => {
+        tile += `<div id="carta${i}" class="card-block" onclick="selectCard(${i})">
+        <div class="card-front" id="front${i}">?</div>
+        <div class="card-back" id="back${i}">${item}</div>
+        </div>`
+    })
+    
+    cardContainer.innerHTML = tile;
+}
 
-cardContainer.innerHTML = tile;
-
+buildCards()
 
 //Compara una carta seleccionada con otra carta seleccionada
 
@@ -142,6 +171,16 @@ function deselectCard(cardsSelected){
             back2.setAttribute("id","correct")
 
             scoreUp();
+            paresResueltos += 1;
+
+            if(paresResueltos == cards.length / 2){
+                setTimeout(() => {
+                    createPlayers()
+                    player1.score = scoreValue
+                    localStorage.setItem(localStorage.length, JSON.stringify(player1))
+                }, 1000);
+            }
+            
         }
 }
 
@@ -152,3 +191,22 @@ function checkSelectedSameCard(){
         return
     }
 }
+
+function scoreboardSort(){
+    for(let i = 0; i < localStorage.length; i++){
+        let usuario = JSON.parse(localStorage.getItem(i))
+        usuarios.push(usuario)
+    }
+    usuarios.sort((a, b) => b.score - a.score)
+}
+
+function scoreboardWrite(){
+    scoreboardSort()
+    usuarios.forEach(el => {
+        scoreboard.innerHTML += `<div>🟢 ${el.name}, ${el.score}</div>`;
+    });
+    
+}
+
+scoreboardWrite()
+
