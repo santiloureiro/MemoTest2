@@ -126,9 +126,6 @@ function selectCard(i) {
     
 }
 
-
-
-
 function scoreUp(){
     scoreValue ++;
 
