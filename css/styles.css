@@ -226,6 +226,51 @@ body a {
   border-radius: 10px;
 }
 
+#clear-scoreboard{
+  padding: 5px;
+  font-size: 0.7em;
+  font-weight: 700;
+  border-radius: 5px;
+  margin-top: 1vh;
+  background-color: white;
+  cursor: pointer;
+  transition: all ease 0.1s;
+}
+
+#clear-scoreboard:hover{
+  background-color: rgb(95, 95, 95);
+  color: white;
+}
+
+#restartButton{
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image:  linear-gradient(108deg, rgb(224, 255, 0) 0%, rgb(255, 0, 110) 100%);
+  background-size: 250%;
+  background-position: left;
+  animation-name: gradient-animation;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all ease 0.3s;
+  cursor: pointer;
+}
+
+#restartButton:hover{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+
 .cards-wrapper {
   display: flex;
   flex-direction: column;

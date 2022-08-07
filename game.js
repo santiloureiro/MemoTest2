@@ -10,6 +10,8 @@ let usuarios = []
 
 let paresResueltos = 0;
 
+let gameWrapper = document.querySelector(".cards-wrapper")
+
 let cardContainer = document.querySelector(".cards-zone")
 
 let tile = "";
@@ -128,14 +130,14 @@ function selectCard(i) {
 
 
 function scoreUp(){
-    scoreValue += 1;
+    scoreValue ++;
 
     scoreCounter.innerHTML = scoreValue
 }
 
 function scoreDown(){
     if(scoreValue > 0){
-        scoreValue -= 1;
+        scoreValue --;
         scoreCounter.innerHTML = scoreValue
         }
 }
@@ -171,15 +173,10 @@ function deselectCard(cardsSelected){
             back2.setAttribute("id","correct")
 
             scoreUp();
-            paresResueltos += 1;
+            paresResueltos ++;
 
-            if(paresResueltos == cards.length / 2){
-                setTimeout(() => {
-                    createPlayers()
-                    player1.score = scoreValue
-                    localStorage.setItem(localStorage.length, JSON.stringify(player1))
-                }, 1000);
-            }
+            scoreSave();
+            restartGame()
             
         }
 }
@@ -189,6 +186,25 @@ function deselectCard(cardsSelected){
 function checkSelectedSameCard(){
     if(back1.id === "correct" || back2.id === "correct"){
         return
+    }
+}
+
+function scoreSave(){
+    if(paresResueltos == cards.length / 2){
+        setTimeout(() => {
+            createPlayers()
+            player1.score = scoreValue
+            localStorage.setItem(localStorage.length, JSON.stringify(player1))
+        }, 1000);
+    }
+}
+
+function restartGame(){
+    if(paresResueltos == cards.length / 2){
+        setTimeout(() => {
+            let restartButton = "<button id=restartButton onclick=refreshPage()>Play Again</button>"
+            gameWrapper.innerHTML += restartButton
+        }, 1000)
     }
 }
 
@@ -206,6 +222,15 @@ function scoreboardWrite(){
         scoreboard.innerHTML += `<div>🟢 ${el.name}, ${el.score}</div>`;
     });
     
+}
+
+function refreshPage(){
+    window.location.reload()
+}
+
+function scoreboardDelete(){
+    localStorage.clear()
+    scoreboard.replaceChildren("ScoreBoard:");
 }
 
 scoreboardWrite()
