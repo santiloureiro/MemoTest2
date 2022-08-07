@@ -189,6 +189,8 @@ function checkSelectedSameCard(){
     }
 }
 
+//Guarda el puntaje del jugador
+
 function scoreSave(){
     if(paresResueltos == cards.length / 2){
         setTimeout(() => {
@@ -199,6 +201,8 @@ function scoreSave(){
     }
 }
 
+//Muestra el boton de volver a jugar
+
 function restartGame(){
     if(paresResueltos == cards.length / 2){
         setTimeout(() => {
@@ -208,6 +212,8 @@ function restartGame(){
     }
 }
 
+//Organiza el ScoreBoard de mayor a menor
+
 function scoreboardSort(){
     for(let i = 0; i < localStorage.length; i++){
         let usuario = JSON.parse(localStorage.getItem(i))
@@ -215,6 +221,8 @@ function scoreboardSort(){
     }
     usuarios.sort((a, b) => b.score - a.score)
 }
+
+//Escribe el LocalStorage de Jugadores en el Scoreboard
 
 function scoreboardWrite(){
     scoreboardSort()
@@ -224,9 +232,13 @@ function scoreboardWrite(){
     
 }
 
+//Recarga la pagina
+
 function refreshPage(){
     window.location.reload()
 }
+
+//Limpia el localStorage
 
 function scoreboardDelete(){
     localStorage.clear()
