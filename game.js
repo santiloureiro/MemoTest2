@@ -63,7 +63,9 @@ class Player {
 const createPlayers = () => {
     player1 = new Player(prompt("Enter Player One's Name"), 0);
 
-    alert("Score saved, " + player1.name);
+    let name = player1.name || "Usuario Anonimo"
+
+    alert("Score saved, " + name);
 
 }
 
@@ -224,15 +226,9 @@ function scoreboardSort(){
 function scoreboardWrite(){
     scoreboardSort()
     usuarios.forEach(el => {
-        scoreboard.innerHTML += `<div>🟢 ${el.name}, ${el.score}</div>`;
+        scoreboard.innerHTML += `<div>🟢 ${el.name || "Usuario Anonimo"}, ${el.score}</div>`;
     });
     
-}
-
-//Recarga la pagina
-
-function refreshPage(){
-    window.location.reload()
 }
 
 //Limpia el localStorage
@@ -241,6 +237,13 @@ function scoreboardDelete(){
     localStorage.clear()
     scoreboard.replaceChildren("ScoreBoard:");
 }
+
+//Recarga la pagina
+
+function refreshPage(){
+    window.location.reload()
+}
+
 
 scoreboardWrite()
 
