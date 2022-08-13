@@ -364,8 +364,8 @@ body a {
 
 @media (min-width: 1024px){
   .card-block, .card-back, .card-front{
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     font-size: 1.5em;
   }
 
