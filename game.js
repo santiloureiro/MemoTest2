@@ -28,6 +28,8 @@ startButton.onclick = () => {startGame()}
 
 let cardsFronts = document.getElementsByClassName("card-front")
 
+let player1;
+
 let back1
 let back2
 let front1
@@ -61,12 +63,27 @@ class Player {
 //Crea Jugadores con el constructor
 
 const createPlayers = () => {
-    player1 = new Player(prompt("Enter Player One's Name"), 0);
-
-    let name = player1.name || "Usuario Anonimo"
-
-    alert("Score saved, " + name);
-
+(async () => {
+    const { value: text } = await Swal.fire({
+        title: 'Enter your Name',
+        input: 'text',
+        showCancelButton: true,
+        inputValidator: (value) => {
+            if (!value) {
+                return 'You need to write something!'
+                }
+            },
+        allowOutsideClick: () => {
+            return false
+            }
+        })
+        
+        if (text) {
+            player1 = new Player(text, scoreValue);
+            localStorage.setItem(localStorage.length, JSON.stringify(player1))
+            Swal.fire(`Score saved, ${text}`)
+        }
+    })()
 }
 
 //Primero se randomiza el array y se crean las cards para el juego
@@ -194,8 +211,6 @@ function scoreSave(){
     if(paresResueltos == cards.length / 2){
         setTimeout(() => {
             createPlayers()
-            player1.score = scoreValue
-            localStorage.setItem(localStorage.length, JSON.stringify(player1))
         }, 1000);
     }
 }
@@ -246,4 +261,3 @@ function refreshPage(){
 
 
 scoreboardWrite()
-
