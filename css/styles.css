@@ -121,6 +121,11 @@ body a {
   border-radius: 10px;
 }
 
+#pokeball-img{
+  width: 20px;
+  height: 20px;
+}
+
 .game-wrapper {
   background-color: #161616;
   width: auto;
@@ -235,6 +240,14 @@ body a {
   background-color: white;
   cursor: pointer;
   transition: all ease 0.1s;
+}
+
+.scoreboard-item{
+  display: flex;
+}
+
+.scoreboard-item img{
+  margin-right: 3px;
 }
 
 #clear-scoreboard:hover{
