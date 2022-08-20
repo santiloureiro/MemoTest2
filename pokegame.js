@@ -284,3 +284,4 @@ function refreshPage() {
 
 scoreboardWrite()
 
+buildCards()
