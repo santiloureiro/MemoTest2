@@ -45,7 +45,7 @@ function startGame(){
 setTimeout(() => {
     
     for (const el of cardsFronts) {
-        el.style.zIndex = "10";
+        el.style.zIndex = "1";
     }
     }
 , 1500);
@@ -137,19 +137,19 @@ function shuffleCards () {
 //Selecciona Cartas
 
 function selectCard(i) {
-    let cartaBack = document.getElementById("back"+i)
-    let cartaFront = document.getElementById("front"+i)
-    cartaFront.style.zIndex = -1
-    cartaBack.style.zIndex = 1
+    let cartaBack = document.getElementById("back" + i)
+    let cartaFront = document.getElementById("front" + i)
+    cartaFront.classList.add("card-hide")
+    cartaBack.classList.add("card-show")
     cardsSelected.push(i)
 
     console.log(cardsSelected)
 
-    if(cardsSelected.length == 2){
+    if (cardsSelected.length == 2) {
         deselectCard(cardsSelected)
         cardsSelected = [];
     }
-    
+
 }
 
 function scoreUp(){
@@ -167,41 +167,43 @@ function scoreDown(){
 
 //Deselecciona la carta cuando esta es correcta o incorrecta
 
-function deselectCard(cardsSelected){
+function deselectCard(cardsSelected) {
 
-        back1 = document.getElementById("back"+cardsSelected[0])
-        back2 = document.getElementById("back"+cardsSelected[1])
-        front1 = document.getElementById("front"+cardsSelected[0])
-        front2 = document.getElementById("front"+cardsSelected[1])
+    back1 = document.getElementById("back" + cardsSelected[0])
+    back2 = document.getElementById("back" + cardsSelected[1])
+    front1 = document.getElementById("front" + cardsSelected[0])
+    front2 = document.getElementById("front" + cardsSelected[1])
 
-        checkSelectedSameCard()
+    checkSelectedSameCard()
 
-        if((back1.innerHTML != back2.innerHTML) || (back1.id === back2.id)){
-            setTimeout(() => {
-                front1.style.zIndex = 999;
-                front2.style.zIndex = 999;
-            }, 500);
+    if ((back1.innerHTML != back2.innerHTML) || (back1.id === back2.id)) {
+        setTimeout(() => {
+            front1.classList.add("card-show");
+            front1.classList.remove("card-hide");
+            front2.classList.add("card-show");
+            front2.classList.remove("card-hide");
+            back1.classList.remove("card-show")
+            back2.classList.remove("card-show")
+        }, 500);
 
-            scoreDown()
+        scoreDown()
 
-        } else {
-            setTimeout(() => {
-                back1.style.zIndex = 999;
-                back2.style.zIndex = 999;
-                back1.style.backgroundColor = "#D9FF9B"
-                back2.style.backgroundColor = "#D9FF9B"
-            }, 500);
+    } else {
+        setTimeout(() => {
+            back1.classList.add("card-show")
+            back2.classList.add("card-show")
+        }, 500);
 
-            back1.setAttribute("id","correct")
-            back2.setAttribute("id","correct")
+        back1.setAttribute("id", "correct")
+        back2.setAttribute("id", "correct")
 
-            scoreUp();
-            paresResueltos ++;
+        scoreUp();
+        paresResueltos++;
 
-            scoreSave();
-            restartGame()
-            
-        }
+        scoreSave();
+        restartGame()
+
+    }
 }
 
 //Checkea si la card seleccionada es igual a la clickeada
