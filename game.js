@@ -25,7 +25,7 @@ let scoreboard = document.getElementById("game-scoreboard")
 
 let scoreboardValue = "";
 
-startButton.onclick = () => {startGame()}
+startButton.onclick = () => { startGame(), timeScore()  }
 
 let cardsFronts = document.getElementsByClassName("card-front")
 
