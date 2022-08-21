@@ -307,7 +307,7 @@ body a {
   height: 60px;
   font-size: 1.3em;
   border-radius: 5px;
-  cursor: pointer;
+
 }
 
 .poke-img{
@@ -354,39 +354,13 @@ body a {
   
 }
 
-@media (min-width: 805px) {
-  .page-title {
-    font-size: 7em;
-    letter-spacing: -5px;
-  }
-  #difficulty-selection-list {
-    flex-direction: column;
-    text-align: center;
-    width: 40vh;
-  }
-  .difficulty-selector {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 20px;
-    font-size: 1.5em;
-  }
-  .card-block, .card-back, .card-front{
-    width: 50px;
-    height: 50px;
-  }
-
-
-}
 
 @media (min-width: 1024px){
   .card-block, .card-back, .card-front{
     width: 130px;
     height: 130px;
     font-size: 1.5em;
+    cursor: pointer;
   }
 
   .back-button, .score{
