@@ -101,29 +101,38 @@ function generate6RandomPokemon() {
                 .then(response => response.json())
                 .then(pokemon => {
                     let imagen = pokemon.sprites.front_default;
-                    cards.push(imagen)
-                    cards.push(imagen)
+                        cards.push(imagen)
+                        cards.push(imagen)
+                        if(cards.length === 12){
+                            resolve(cards)
+                        }
                 });
         }
-        resolve(cards)
     })
-
 }
 
 
 
-function buildCards() {    
-        generate6RandomPokemon()
-        shuffleCards()
-        console.log("Pepe")
-        cards.forEach((item, i) => {
-            tile += `<div id="carta${i}" class="card-block" onclick="selectCard(${i})">
-            <div class="card-front" id="front${i}">?</div>
-            <div class="card-back" id="back${i}"><img src="${item}" alt=""></div>
-            </div>`
-        })
-        cardContainer.innerHTML = tile
+function buildCards(cardElements) {
+                shuffleCards()
+                console.log("Pepe")
+                cardElements.forEach((item, i) => {
+                    tile += `<div id="carta${i}" class="card-block" onclick="selectCard(${i})">
+                    <div class="card-front" id="front${i}">?</div>
+                    <div class="card-back" id="back${i}"><img class="poke-img" src="${item}" alt=""></div>
+                    </div>`
+                })
+                cardContainer.innerHTML = tile
+
+
 }
+
+async function buildGame(){
+    let pokemones = await generate6RandomPokemon();
+    buildCards(pokemones)
+    
+}
+
 
 //Compara una carta seleccionada con otra carta seleccionada
 
@@ -284,4 +293,6 @@ function refreshPage() {
 
 scoreboardWrite()
 
-buildCards()
+
+buildGame()
+
