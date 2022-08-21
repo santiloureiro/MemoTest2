@@ -35,7 +35,6 @@ body a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .page-title {
@@ -379,7 +378,7 @@ body a {
 @media (min-width: 1500px) {
   .cards-wrapper {
     height: 80vh;
-    width: 40vw;
+    width: 60vw;
   }
   .cards-zone{
     grid-template-columns: 1fr 1fr 1fr 1fr;
