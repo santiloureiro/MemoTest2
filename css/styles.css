@@ -29,12 +29,31 @@ body a {
   animation-iteration-count: infinite;
 }
 
+.card-show{
+  z-index: 1;
+  opacity: 1;
+  transition: all ease 0.3s;
+}
+
+.card-hide{
+  z-index: 0;
+  opacity: 0;
+  transition: all ease 0.3s;
+}
+
+#correct{
+  background-color: #D9FF9B;
+  opacity: 1;
+  transition: 1s all ease;
+}
+
 .main-wrapper {
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .page-title {

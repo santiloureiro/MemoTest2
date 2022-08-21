@@ -3,6 +3,7 @@ let scoreValue = 0;
 let scoreCounter = document.getElementById("score-counter")
 
 const cards = ["🚓", "🍕", "💣", "🚕", "🍌", "🐝", "🚓", "🍕", "💣", "🚕", "🍌", "🐝"];
+const cards2 = ["🚓", "🍕", "💣", "🚕", "🍌", "🐝", "🚓", "🍕", "💣", "🚕", "🍌", "🐝"];
 
 let cardsSelected = [];
 
@@ -47,7 +48,7 @@ setTimeout(() => {
         el.style.zIndex = "10";
     }
     }
-, 1000);
+, 1500);
     return
 }
 
@@ -90,8 +91,14 @@ const createPlayers = () => {
 
 shuffleCards()
 
-function buildCards(){
-    cards.forEach((item, i) => {
+
+function buildCards(difficulty){
+    // var easy = 24
+    // var medium = 48
+    // var hard = 64
+
+
+    difficulty.forEach((item, i) => {
         tile += `<div id="carta${i}" class="card-block" onclick="selectCard(${i})">
         <div class="card-front" id="front${i}">?</div>
         <div class="card-back" id="back${i}">${item}</div>
@@ -101,7 +108,7 @@ function buildCards(){
     cardContainer.innerHTML = tile;
 }
 
-buildCards()
+buildCards(cards)
 
 //Compara una carta seleccionada con otra carta seleccionada
 

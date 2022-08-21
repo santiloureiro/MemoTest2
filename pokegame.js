@@ -44,7 +44,7 @@ function startGame() {
     setTimeout(() => {
 
         for (const el of cardsFronts) {
-            el.style.zIndex = "10";
+            el.style.zIndex = "1";
         }
     }
         , 1000);
@@ -94,45 +94,39 @@ function generateRandomNumber() {
 }
 
 function generate6RandomPokemon() {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         for (let i = 0; i < 6; i++) {
             let randomN = generateRandomNumber()
             fetch(`https://pokeapi.co/api/v2/pokemon/${randomN}/`)
                 .then(response => response.json())
                 .then(pokemon => {
                     let imagen = pokemon.sprites.front_default;
-                        cards.push(imagen)
-                        cards.push(imagen)
+                        for (let i = 0; i < 2; i++) {
+                            cards.push(imagen)
+                        }
                         if(cards.length === 12){
                             resolve(cards)
-                        }
-                });
+                        } 
+                }).catch(err => {
+                    console.log("Error al recuperar pokemon", err)
+                    reject(err);
+                })
         }
     })
 }
 
-
-
-function buildCards(cardElements) {
-                shuffleCards()
-                console.log("Pepe")
-                cardElements.forEach((item, i) => {
-                    tile += `<div id="carta${i}" class="card-block" onclick="selectCard(${i})">
-                    <div class="card-front" id="front${i}">?</div>
-                    <div class="card-back" id="back${i}"><img class="poke-img" src="${item}" alt=""></div>
-                    </div>`
-                })
-                cardContainer.innerHTML = tile
-
-
+async function buildCards() {
+    await generate6RandomPokemon().then(pokes => {
+        shuffleCards()
+        pokes.forEach((item, i) => {
+            tile += `<div id="carta${i}" class="card-block" onclick="selectCard(${i})">
+            <div class="card-front" id="front${i}">?</div>
+            <div class="card-back" id="back${i}"><img class="poke-img" src="${item}" alt=""></div>
+            </div>`
+        })
+        cardContainer.innerHTML = tile
+    }).catch(err => console.log("Error al crear cartas", err));
 }
-
-async function buildGame(){
-    let pokemones = await generate6RandomPokemon();
-    buildCards(pokemones)
-    
-}
-
 
 //Compara una carta seleccionada con otra carta seleccionada
 
@@ -163,8 +157,8 @@ function shuffleCards() {
 function selectCard(i) {
     let cartaBack = document.getElementById("back" + i)
     let cartaFront = document.getElementById("front" + i)
-    cartaFront.style.zIndex = -1
-    cartaBack.style.zIndex = 1
+    cartaFront.classList.add("card-hide")
+    cartaBack.classList.add("card-show")
     cardsSelected.push(i)
 
     console.log(cardsSelected)
@@ -202,18 +196,20 @@ function deselectCard(cardsSelected) {
 
     if ((back1.innerHTML != back2.innerHTML) || (back1.id === back2.id)) {
         setTimeout(() => {
-            front1.style.zIndex = 999;
-            front2.style.zIndex = 999;
+            front1.classList.add("card-show");
+            front1.classList.remove("card-hide");
+            front2.classList.add("card-show");
+            front2.classList.remove("card-hide");
+            back1.classList.remove("card-show")
+            back2.classList.remove("card-show")
         }, 500);
 
         scoreDown()
 
     } else {
         setTimeout(() => {
-            back1.style.zIndex = 999;
-            back2.style.zIndex = 999;
-            back1.style.backgroundColor = "#D9FF9B"
-            back2.style.backgroundColor = "#D9FF9B"
+            back1.classList.add("card-show")
+            back2.classList.add("card-show")
         }, 500);
 
         back1.setAttribute("id", "correct")
@@ -233,16 +229,6 @@ function deselectCard(cardsSelected) {
 function checkSelectedSameCard() {
     if (back1.id === "correct" || back2.id === "correct") {
         return
-    }
-}
-
-//Guarda el puntaje del jugador
-
-function scoreSave() {
-    if (paresResueltos == cards.length / 2) {
-        setTimeout(() => {
-            createPlayers()
-        }, 1000);
     }
 }
 
@@ -277,6 +263,16 @@ function scoreboardWrite() {
 
 }
 
+//Guarda el puntaje del jugador
+
+function scoreSave() {
+    if (paresResueltos == cards.length / 2) {
+        setTimeout(() => {
+            createPlayers()
+        }, 1000);
+    }
+}
+
 //Limpia el localStorage
 
 function scoreboardDelete() {
@@ -294,5 +290,5 @@ function refreshPage() {
 scoreboardWrite()
 
 
-buildGame()
+buildCards()
 
