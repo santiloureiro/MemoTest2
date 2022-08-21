@@ -266,5 +266,13 @@ function refreshPage(){
     window.location.reload()
 }
 
+function timeScore(){
+    setInterval(() => {
+        scoreValue -= 1;
+        scoreCounter.innerHTML = scoreValue
+    }, 1000);
+}
+
+
 
 scoreboardWrite()

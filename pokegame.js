@@ -1,4 +1,4 @@
-let scoreValue = 0;
+let scoreValue = 99;
 
 let scoreCounter = document.getElementById("score-counter")
 
@@ -24,7 +24,7 @@ let scoreboard = document.getElementById("game-scoreboard")
 
 let scoreboardValue = "";
 
-startButton.onclick = () => { startGame() }
+startButton.onclick = () => { startGame(), timeScore()  }
 
 let cardsFronts = document.getElementsByClassName("card-front")
 
@@ -292,3 +292,10 @@ scoreboardWrite()
 
 buildCards()
 
+
+function timeScore(){
+    setInterval(() => {
+        scoreValue -= 1;
+        scoreCounter.innerHTML = scoreValue
+    }, 1000);
+}
