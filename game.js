@@ -1,4 +1,4 @@
-let scoreValue = 0;
+let scoreValue = 99;
 
 let scoreCounter = document.getElementById("score-counter")
 
