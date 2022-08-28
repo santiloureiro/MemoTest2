@@ -2,8 +2,11 @@ let scoreValue = 99;
 
 let scoreCounter = document.getElementById("score-counter")
 
-const cards = ["🚓", "🍕", "💣", "🚕", "🍌", "🐝", "🚓", "🍕", "💣", "🚕", "🍌", "🐝"];
-const cards2 = ["🚓", "🍕", "💣", "🚕", "🍌", "🐝", "🚓", "🍕", "💣", "🚕", "🍌", "🐝"];
+let cards = []
+
+const easy = ["🚓", "🍕", "💣", "🚕","🚓", "🍕", "💣", "🚕",]
+const medium = ["🚓", "🍕", "💣", "🚕", "🍌", "🐝", "🚓", "🍕", "💣", "🚕", "🍌", "🐝"];
+const hard = ["🚓", "🍕", "💣", "🚕", "🍌", "🐝","🚀","🛸","🌭","🍿", "🚓", "🍕", "💣", "🚕", "🍌", "🐝","🚀","🛸","🌭","🍿"];
 
 let cardsSelected = [];
 
@@ -19,13 +22,35 @@ let tile = "";
 
 let startWall = document.getElementById("game-starter")
 
-let startButton = document.getElementById("start-button")
+let easyStartButton = document.getElementById("easy-start-button")
+let mediumStartButton = document.getElementById("medium-start-button")
+let hardStartButton = document.getElementById("hard-start-button")
 
-let scoreboard = document.getElementById("game-scoreboard")
+let scoreboard = document.querySelector(".game-scoreboard")
 
 let scoreboardValue = "";
 
-startButton.onclick = () => { startGame(), timeScore()  }
+let difficulty;
+
+if(easyStartButton){
+    difficulty = "🟢"
+    cards = easy
+    easyStartButton.onclick = () => { startGame(), timeScore(),shuffleCards(easy) ,buildCards(easy)  }
+}
+
+if(mediumStartButton){
+    difficulty = "🟡"
+    cards = medium
+    mediumStartButton.onclick = () => { startGame(), timeScore(),shuffleCards(medium) ,buildCards(medium)  }
+}
+
+if(hardStartButton){
+    difficulty = "🔴"
+    cards = hard
+    hardStartButton.onclick = () => { startGame(), timeScore(),shuffleCards(hard) ,buildCards(hard)  }
+}
+
+
 
 let cardsFronts = document.getElementsByClassName("card-front")
 
@@ -48,16 +73,17 @@ setTimeout(() => {
         el.style.zIndex = "1";
     }
     }
-, 1500);
+, 2000);
     return
 }
 
 //Constructor de Jugadores
 
 class Player {
-    constructor(name, score){
+    constructor(name, score, difficulty){
         this.name = name;
         this.score = score;
+        this.difficulty = difficulty
     }
 }
 
@@ -80,7 +106,7 @@ const createPlayers = () => {
         })
         
         if (text) {
-            player1 = new Player(text, scoreValue);
+            player1 = new Player(text, scoreValue, difficulty);
             localStorage.setItem(localStorage.length, JSON.stringify(player1))
             Swal.fire(`Score saved, ${text}`)
         }
@@ -92,14 +118,14 @@ const createPlayers = () => {
 shuffleCards()
 
 
-function buildCards(difficulty){
+function buildCards(){
     // var easy = 24
     // var medium = 48
     // var hard = 64
 
 
-    difficulty.forEach((item, i) => {
-        tile += `<div id="carta${i}" class="card-block" onclick="selectCard(${i})">
+    cards.forEach((item, i) => {
+        tile += `<div dataid="carta${i}" class="card-block" id="card-${difficulty}" onclick="selectCard(${i})">
         <div class="card-front" id="front${i}">?</div>
         <div class="card-back" id="back${i}">${item}</div>
         </div>`
@@ -107,8 +133,6 @@ function buildCards(difficulty){
     
     cardContainer.innerHTML = tile;
 }
-
-buildCards(cards)
 
 //Compara una carta seleccionada con otra carta seleccionada
 
@@ -120,10 +144,9 @@ function compareCards(){
     }
 }
 
-
 //Mezcla el array de cartas
 
-function shuffleCards () {
+function shuffleCards() {
     let j, x, index;
     for (index = cards.length - 1; index > 0; index--) {
         j = Math.floor(Math.random() * (index + 1));
@@ -202,7 +225,6 @@ function deselectCard(cardsSelected) {
 
         scoreSave();
         restartGame()
-
     }
 }
 
@@ -250,7 +272,7 @@ function scoreboardSort(){
 function scoreboardWrite(){
     scoreboardSort()
     usuarios.forEach(el => {
-        scoreboard.innerHTML += `<div>🟢 ${el.name || "Usuario Anonimo"}, ${el.score}</div>`;
+        scoreboard.innerHTML += `<div>${el.difficulty} ${el.name || "Usuario Anonimo"}, ${el.score}</div>`;
     });
     
 }

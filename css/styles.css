@@ -200,7 +200,7 @@ body a {
   z-index: 15;
 }
 
-#start-button{
+.start-button{
   padding: 10px;
   padding-left: 50px;
   padding-right: 50px;
@@ -231,13 +231,13 @@ body a {
   border-radius: 10px;
 }
 
-#start-button:hover{
+.start-button:hover{
   padding: 15px;
   padding-left: 60px;
   padding-right: 60px;
 }
 
-#game-scoreboard{
+.game-scoreboard{
   font-size: 0.9em;
   font-weight: 500;
   text-align: justify;
@@ -320,6 +320,15 @@ body a {
   place-items: center;
 }
 
+#easy-zone {
+  grid-template-columns: 1fr 1fr;
+}
+
+#hard-zone {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
 .card-block, .card-back, .card-front{
   width: 60px;
   height: 60px;
@@ -368,9 +377,21 @@ body a {
   .cards-zone{
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+
+  #easy-zone {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  #hard-zone {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+  }
+  
   }
 
 @media (min-width: 805px) {
+  #hard-zone {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
     .page-title {
       font-size: 7em;
       letter-spacing: -5px;
@@ -394,8 +415,8 @@ body a {
 
 @media (min-width: 1024px){
   .card-block, .card-back, .card-front{
-    width: 130px;
-    height: 130px;
+    width: 90px;
+    height: 90px;
     font-size: 1.5em;
     cursor: pointer;
   }
@@ -411,6 +432,7 @@ body a {
     width: fit-content;
     height: fit-content;
   }
+
 }
 
 @media (min-width: 1500px) {
