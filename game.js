@@ -272,7 +272,7 @@ function scoreboardSort(){
 function scoreboardWrite(){
     scoreboardSort()
     usuarios.forEach(el => {
-        scoreboard.innerHTML += `<div>${el.difficulty} ${el.name || "Usuario Anonimo"}, ${el.score}</div>`;
+        scoreboard.innerHTML += `<div class="scoreboard-item">${el.difficulty} ${el.name || "Usuario Anonimo"}, ${el.score}</div>`;
     });
     
 }

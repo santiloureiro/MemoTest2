@@ -14,13 +14,15 @@ let gameWrapper = document.querySelector(".cards-wrapper")
 
 let cardContainer = document.querySelector("#poke-zone")
 
+let gameLoader = document.querySelector(".game-loader")
+
 let tile = "";
 
 let startWall = document.getElementById("game-starter")
 
-let startButton = document.getElementById("start-button")
+let startButton = document.querySelector(".start-button")
 
-let scoreboard = document.getElementById("game-scoreboard")
+let scoreboard = document.querySelector(".game-scoreboard")
 
 let scoreboardValue = "";
 
@@ -51,12 +53,17 @@ function startGame() {
     return
 }
 
+function loaderDelete(){
+    gameLoader.setAttribute("id", "loaded")
+}
+
 //Constructor de Jugadores
 
 class Player {
     constructor(name, score) {
         this.name = name;
         this.score = score;
+        this.difficulty = `<img id="pokeball-img" src="../resources/Poké_Ball_icon.svg" alt=""></img>`
     }
 }
 
@@ -125,6 +132,7 @@ async function buildCards() {
             </div>`
         })
         cardContainer.innerHTML = tile
+        loaderDelete();
     }).catch(err => console.log("Error al crear cartas", err));
 }
 
@@ -286,6 +294,15 @@ function refreshPage() {
     window.location.reload()
 }
 
+function timeScore(){
+    setInterval(() => {
+        scoreValue -= 1;
+        scoreCounter.innerHTML = scoreValue
+    }, 1000);
+}
+
+
+
 
 scoreboardWrite()
 
@@ -293,9 +310,5 @@ scoreboardWrite()
 buildCards()
 
 
-function timeScore(){
-    setInterval(() => {
-        scoreValue -= 1;
-        scoreCounter.innerHTML = scoreValue
-    }, 1000);
-}
+
+

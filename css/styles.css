@@ -161,7 +161,7 @@ body a {
 
 .game-title{
   font-size: 1.5em;
-  z-index: 999;
+  z-index: 11;
 }
 
 .back-button, .score {
@@ -174,7 +174,7 @@ body a {
   color: white;
   font-weight: 700;
   transition: all 0.3s ease;
-  z-index: 999;
+  z-index: 11;
 }
 .back-button:hover, .score:hover {
   background-color: white;
@@ -197,7 +197,30 @@ body a {
   bottom: 0;
   left:0;
   right: 0;
-  z-index: 15;
+  z-index: 10;
+}
+
+.game-loader{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  inset: 0;
+  z-index: 99;
+  transition: all 0.2s ease;
+  opacity: 100;
+}
+
+#loaded{
+  visibility: hidden;
+  opacity: 0;
+}
+
+#poke-spinner{
+  width: 300px;
+  height: fit-content;
 }
 
 .start-button{
