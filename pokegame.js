@@ -266,7 +266,7 @@ function scoreboardSort() {
 function scoreboardWrite() {
     scoreboardSort()
     usuarios.forEach(el => {
-        scoreboard.innerHTML += `<div class="scoreboard-item"><img id="pokeball-img" src="../resources/Poké_Ball_icon.svg" alt=""> ${el.name || "Usuario Anonimo"}, ${el.score}</div>`;
+        scoreboard.innerHTML += `<div class="scoreboard-item">${el.difficulty} ${el.name || "Usuario Anonimo"}, ${el.score}</div>`;
     });
 
 }
