@@ -119,7 +119,11 @@ body a {
 }
 
 #expert-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(255, 255, 255);
+  font-size: 0.8em;
   color: rgb(0, 0, 0);
 }
 #expert-selector:hover {
@@ -127,19 +131,7 @@ body a {
   color: rgb(255, 255, 255);
 }
 
-#secret-button {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  background-color: #161616;
-  font-weight: 900;
-  color: rgb(255, 255, 255);
-  margin: 20px;
-  padding: 5px;
-  border-radius: 10px;
-}
-
-#pokeball-img{
+.pokeball-img{
   width: 20px;
   height: 20px;
 }
@@ -285,6 +277,7 @@ body a {
 
 .scoreboard-item{
   display: flex;
+  
 }
 
 .scoreboard-item img{
@@ -434,6 +427,9 @@ body a {
       border-radius: 20px;
       font-size: 1.5em;
     }
+    #expert-selector {
+      font-size: 1.5em;
+    }
   }
 
 @media (min-width: 1024px){
@@ -451,6 +447,7 @@ body a {
   .game-title{
     font-size: 2em;
   }
+
   .poke-img{
     width: fit-content;
     height: fit-content;

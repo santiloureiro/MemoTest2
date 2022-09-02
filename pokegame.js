@@ -63,7 +63,7 @@ class Player {
     constructor(name, score) {
         this.name = name;
         this.score = score;
-        this.difficulty = `<img id="pokeball-img" src="../resources/Poké_Ball_icon.svg" alt=""></img>`
+        this.difficulty = `<img class="pokeball-img" src="../resources/Poké_Ball_icon.svg" alt=""></img>`
     }
 }
 
