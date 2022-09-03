@@ -29,6 +29,7 @@ let scoreboardValue = "";
 startButton.onclick = () => { startGame(), timeScore()  }
 
 let cardsFronts = document.getElementsByClassName("card-front")
+let cardsBlocks = document.getElementsByClassName("card-block")
 
 let player1;
 
@@ -40,16 +41,31 @@ let front2
 
 //Comienza el juego
 
+// function startGame() {
+//     startWall.style.display = "none"
+
+//     setTimeout(() => {
+
+//         for (const el of cardsFronts) {
+//             el.style.zIndex = "1";
+//         }
+//     }
+//         , 1000);
+//     return
+// }
+
 function startGame() {
     startWall.style.display = "none"
-
+    
     setTimeout(() => {
-
+        for (const el of cardsBlocks){
+            el.style.pointerEvents = "all";
+        }
         for (const el of cardsFronts) {
             el.style.zIndex = "1";
         }
     }
-        , 1000);
+        , 2000);
     return
 }
 

@@ -16,8 +16,14 @@ body a {
   color: white;
 }
 
-.gradient-title, .game-title, .page-title {
-  background-image: linear-gradient(108deg, rgb(224, 255, 0) 0%, rgb(255, 0, 110) 100%);
+.gradient-title,
+.game-title,
+.page-title {
+  background-image: linear-gradient(
+    108deg,
+    rgb(224, 255, 0) 0%,
+    rgb(255, 0, 110) 100%
+  );
   -webkit-background-clip: text;
   background-clip: clip;
   -webkit-text-fill-color: transparent;
@@ -29,20 +35,20 @@ body a {
   animation-iteration-count: infinite;
 }
 
-.card-show{
+.card-show {
   z-index: 1;
   opacity: 1;
   transition: all ease 0.3s;
 }
 
-.card-hide{
+.card-hide {
   z-index: 0;
   opacity: 0;
   transition: all ease 0.3s;
 }
 
-#correct{
-  background-color: #D9FF9B;
+#correct {
+  background-color: #d9ff9b;
   opacity: 1;
   transition: 1s all ease;
 }
@@ -131,7 +137,7 @@ body a {
   color: rgb(255, 255, 255);
 }
 
-.pokeball-img{
+.pokeball-img {
   width: 20px;
   height: 20px;
 }
@@ -151,12 +157,13 @@ body a {
   font-size: 0.7em;
 }
 
-.game-title{
+.game-title {
   font-size: 1.5em;
   z-index: 11;
 }
 
-.back-button, .score {
+.back-button,
+.score {
   padding: 5px;
   padding-left: 5px;
   padding-right: 5px;
@@ -168,7 +175,8 @@ body a {
   transition: all 0.3s ease;
   z-index: 11;
 }
-.back-button:hover, .score:hover {
+.back-button:hover,
+.score:hover {
   background-color: white;
   color: black;
 }
@@ -177,7 +185,7 @@ body a {
   color: white;
 }
 
-#game-starter{
+#game-starter {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -187,12 +195,12 @@ body a {
   color: white;
   top: 0;
   bottom: 0;
-  left:0;
+  left: 0;
   right: 0;
   z-index: 10;
 }
 
-.game-loader{
+.game-loader {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -205,21 +213,25 @@ body a {
   opacity: 100;
 }
 
-#loaded{
+#loaded {
   visibility: hidden;
   opacity: 0;
 }
 
-#poke-spinner{
+#poke-spinner {
   width: 300px;
   height: fit-content;
 }
 
-.start-button{
+.start-button {
   padding: 10px;
   padding-left: 50px;
   padding-right: 50px;
-  background-image:  linear-gradient(108deg, rgb(224, 255, 0) 0%, rgb(255, 0, 110) 100%);
+  background-image: linear-gradient(
+    108deg,
+    rgb(224, 255, 0) 0%,
+    rgb(255, 0, 110) 100%
+  );
   background-size: 250%;
   background-position: left;
   animation-name: gradient-animation;
@@ -234,25 +246,20 @@ body a {
   cursor: pointer;
 }
 
-#player-creation-button{
-  font-size: 0.9em;
-  font-weight: 500;
-  text-align: center;
-  margin-top: 2vh;
-  padding: 10px;
-  width: 85px;
-  background-color: white;
-  color: #161616;
-  border-radius: 10px;
-}
-
-.start-button:hover{
+.start-button:hover {
   padding: 15px;
   padding-left: 60px;
   padding-right: 60px;
 }
 
-.game-scoreboard{
+.scoreboard-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-scoreboard {
   font-size: 0.9em;
   font-weight: 500;
   text-align: justify;
@@ -264,7 +271,7 @@ body a {
   border-radius: 10px;
 }
 
-#clear-scoreboard{
+#clear-scoreboard {
   padding: 5px;
   font-size: 0.7em;
   font-weight: 700;
@@ -275,28 +282,31 @@ body a {
   transition: all ease 0.1s;
 }
 
-.scoreboard-item{
+.scoreboard-item {
   display: flex;
-  
 }
 
-.scoreboard-item img{
+.scoreboard-item img {
   margin-right: 3px;
 }
 
-#clear-scoreboard:hover{
+#clear-scoreboard:hover {
   background-color: rgb(95, 95, 95);
   color: white;
 }
 
-#restartButton{
+#restartButton {
   padding: 5px;
   padding-left: 20px;
   padding-right: 20px;
   max-width: 200px;
   margin-left: auto;
   margin-right: auto;
-  background-image:  linear-gradient(108deg, rgb(224, 255, 0) 0%, rgb(255, 0, 110) 100%);
+  background-image: linear-gradient(
+    108deg,
+    rgb(224, 255, 0) 0%,
+    rgb(255, 0, 110) 100%
+  );
   background-size: 250%;
   background-position: left;
   animation-name: gradient-animation;
@@ -312,11 +322,10 @@ body a {
   cursor: pointer;
 }
 
-#restartButton:hover{
+#restartButton:hover {
   padding-left: 30px;
   padding-right: 30px;
 }
-
 
 .cards-wrapper {
   display: flex;
@@ -345,15 +354,16 @@ body a {
   grid-gap: 20px;
 }
 
-.card-block, .card-back, .card-front{
+.card-block,
+.card-back,
+.card-front {
   width: 60px;
   height: 60px;
   font-size: 1.3em;
   border-radius: 5px;
-
 }
 
-.poke-img{
+.poke-img {
   width: 60px;
   height: fit-content;
 }
@@ -361,9 +371,10 @@ body a {
 .card-block {
   position: relative;
   aspect-ratio: 1/1;
+  pointer-events: none;
 }
 
-.card-front{
+.card-front {
   background-color: rgb(80, 80, 80);
   display: flex;
   align-items: center;
@@ -372,7 +383,7 @@ body a {
   z-index: -1;
 }
 
-.card-back{
+.card-back {
   position: absolute;
   background-color: white;
   display: flex;
@@ -381,7 +392,7 @@ body a {
   border-radius: 10px;
 }
 
-#selected-card{
+#selected-card {
   background-color: rgba(255, 255, 255, 0.24);
 }
 
@@ -390,7 +401,7 @@ body a {
     height: 70vh;
     width: 70vw;
   }
-  .cards-zone{
+  .cards-zone {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
@@ -401,58 +412,71 @@ body a {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
   }
-  
-  }
+}
 
 @media (min-width: 805px) {
   #hard-zone {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
-    .page-title {
-      font-size: 7em;
-      letter-spacing: -5px;
-    }
-    #difficulty-selection-list {
-      flex-direction: column;
-      text-align: center;
-      width: 40vh;
-    }
-    .difficulty-selector {
-      padding-top: 5px;
-      padding-bottom: 5px;
-      padding-left: 10px;
-      padding-right: 10px;
-      margin-top: 5px;
-      margin-bottom: 5px;
-      border-radius: 20px;
-      font-size: 1.5em;
-    }
-    #expert-selector {
-      font-size: 1.5em;
-    }
+  .page-title {
+    font-size: 7em;
+    letter-spacing: -5px;
+  }
+  #difficulty-selection-list {
+    flex-direction: column;
+    text-align: center;
+    width: 40vh;
+  }
+  .difficulty-selector {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    font-size: 1.5em;
+  }
+  #expert-selector {
+    font-size: 1.5em;
+  }
+  #game-starter {
+    flex-direction: row;
+    opacity: 100;
   }
 
-@media (min-width: 1024px){
-  .card-block, .card-back, .card-front{
+  #game-starter-transparent{
+    opacity: 0;
+  }
+
+  .scoreboard-container {
+    margin-left: 2em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-block,
+  .card-back,
+  .card-front {
     width: 90px;
     height: 90px;
     font-size: 1.5em;
     cursor: pointer;
   }
 
-  .back-button, .score{
+  .back-button,
+  .score {
     font-size: 1em;
   }
 
-  .game-title{
+  .game-title {
     font-size: 2em;
   }
 
-  .poke-img{
+  .poke-img {
     width: fit-content;
     height: fit-content;
   }
-
 }
 
 @media (min-width: 1500px) {
@@ -460,12 +484,13 @@ body a {
     height: 80vh;
     width: 60vw;
   }
-  .cards-zone{
+  .cards-zone {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
-  .card-block, .card-back, .card-front{
+  .card-block,
+  .card-back,
+  .card-front {
     width: 130px;
     height: 130px;
   }
-
 }
