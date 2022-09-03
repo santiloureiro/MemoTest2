@@ -128,12 +128,19 @@ body a {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 255, 255);
+  background-color: white;
+  color: rgb(255, 255, 255);
+  color: black;
   font-size: 0.8em;
-  color: rgb(0, 0, 0);
 }
+
+#pokeball-title{
+  width: fit-content;
+  height: 1.3em;
+}
+
 #expert-selector:hover {
-  background-color: rgb(0, 0, 0);
+  background-color: black;
   color: rgb(255, 255, 255);
 }
 
