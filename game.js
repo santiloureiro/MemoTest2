@@ -28,6 +28,10 @@ let hardStartButton = document.getElementById("hard-start-button")
 
 let scoreboard = document.querySelector(".game-scoreboard")
 
+let successAudio = document.querySelector("#success-sound")
+let errorAudio = document.querySelector("#error-sound")
+let timeAudio = document.querySelector("#time-sound")
+
 let scoreboardValue = "";
 
 let difficulty;
@@ -73,8 +77,13 @@ function startGame() {
         for (const el of cardsFronts) {
             el.style.zIndex = "1";
         }
-    }
-        , 2000);
+        timeAudio.play()
+    }   
+    , 2000);
+
+    setInterval(() => {
+        timeAudio.play()
+    }, 60000)
     return
 }
 
@@ -205,21 +214,24 @@ function deselectCard(cardsSelected) {
             back2.classList.remove("card-show")
         }, 500);
 
+        errorAudio.play()
         scoreDown()
 
     } else {
         setTimeout(() => {
             back1.classList.add("card-show")
             back2.classList.add("card-show")
+            successAudio.play()
         }, 500);
 
         back1.setAttribute("id", "correct")
         back2.setAttribute("id", "correct")
 
-        scoreUp();
-        paresResueltos++;
+        scoreUp()
+        paresResueltos++
 
-        scoreSave();
+
+        scoreSave()
         restartGame()
     }
 }
@@ -249,6 +261,7 @@ function restartGame() {
         setTimeout(() => {
             let restartButton = "<button id=restartButton onclick=refreshPage()>Play Again</button>"
             gameWrapper.innerHTML += restartButton
+            timeAudio.pause()
         }, 1000)
     }
 }

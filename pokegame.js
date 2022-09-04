@@ -18,6 +18,10 @@ let gameLoader = document.querySelector(".game-loader")
 
 let tile = "";
 
+let successAudio = document.querySelector("#success-sound")
+let errorAudio = document.querySelector("#error-sound")
+let timeAudio = document.querySelector("#time-sound")
+
 let startWall = document.getElementById("game-starter")
 
 let startButton = document.querySelector(".start-button")
@@ -41,19 +45,6 @@ let front2
 
 //Comienza el juego
 
-// function startGame() {
-//     startWall.style.display = "none"
-
-//     setTimeout(() => {
-
-//         for (const el of cardsFronts) {
-//             el.style.zIndex = "1";
-//         }
-//     }
-//         , 1000);
-//     return
-// }
-
 function startGame() {
     startWall.style.display = "none"
     
@@ -64,8 +55,13 @@ function startGame() {
         for (const el of cardsFronts) {
             el.style.zIndex = "1";
         }
-    }
-        , 2000);
+        timeAudio.play()
+    }   
+    , 2000);
+
+    setInterval(() => {
+        timeAudio.play()
+    }, 60000)
     return
 }
 
@@ -229,6 +225,7 @@ function deselectCard(cardsSelected) {
         }, 500);
 
         scoreDown()
+        errorAudio.play()
 
     } else {
         setTimeout(() => {
@@ -241,6 +238,7 @@ function deselectCard(cardsSelected) {
 
         scoreUp();
         paresResueltos++;
+        successAudio.play()
 
         scoreSave();
         restartGame()
@@ -263,6 +261,7 @@ function restartGame() {
         setTimeout(() => {
             let restartButton = "<button id=restartButton onclick=refreshPage()>Play Again</button>"
             gameWrapper.innerHTML += restartButton
+            timeAudio.pause()
         }, 1000)
     }
 }
