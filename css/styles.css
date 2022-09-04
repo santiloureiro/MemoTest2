@@ -364,8 +364,8 @@ body a {
 .card-block,
 .card-back,
 .card-front {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   font-size: 1.3em;
   border-radius: 5px;
 }
@@ -429,6 +429,14 @@ body a {
     font-size: 7em;
     letter-spacing: -5px;
   }
+  .card-block,
+  .card-back,
+  .card-front {
+    width: 75px;
+    height: 75px;
+  }
+
+
   #difficulty-selection-list {
     flex-direction: column;
     text-align: center;
@@ -465,8 +473,8 @@ body a {
   .card-block,
   .card-back,
   .card-front {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     font-size: 1.5em;
     cursor: pointer;
   }
@@ -499,5 +507,10 @@ body a {
   .card-front {
     width: 130px;
     height: 130px;
+  }
+  .poke-img {
+    width: fit-content;
+    height: fit-content;
+    overflow: hidden;
   }
 }
