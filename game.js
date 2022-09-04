@@ -306,6 +306,4 @@ function timeScore() {
     }, 1000);
 }
 
-
-
 scoreboardWrite()
