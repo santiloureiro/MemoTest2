@@ -271,10 +271,13 @@ function restartGame() {
 function scoreboardSort() {
     for (let i = 0; i < localStorage.length; i++) {
         let usuario = JSON.parse(localStorage.getItem(i))
+        if(usuario == null) return
         usuarios.push(usuario)
     }
+    console.log(usuarios)
     usuarios.sort((a, b) => b.score - a.score)
 }
+
 
 //Escribe el LocalStorage de Jugadores en el Scoreboard
 
@@ -283,7 +286,6 @@ function scoreboardWrite() {
     usuarios.forEach(el => {
         scoreboard.innerHTML += `<div class="scoreboard-item">${el.difficulty} ${el.name || "Usuario Anonimo"}, ${el.score}</div>`;
     });
-
 }
 
 //Guarda el puntaje del jugador
