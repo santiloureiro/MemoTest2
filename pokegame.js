@@ -271,8 +271,10 @@ function restartGame() {
 function scoreboardSort() {
     for (let i = 0; i < localStorage.length; i++) {
         let usuario = JSON.parse(localStorage.getItem(i))
-        if(usuario == null) return
-        usuarios.push(usuario)
+        if(usuario != null){
+            usuarios.push(usuario)
+        }
+
     }
     console.log(usuarios)
     usuarios.sort((a, b) => b.score - a.score)
